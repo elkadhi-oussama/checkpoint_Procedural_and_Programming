@@ -1,0 +1,90 @@
+PROCEDURE dot_product(v1,v2: ARRAY_OF INTEGER, sum : INTEGER)
+VAR
+    i: INTEGER;
+BEGIN
+    sum:=0;
+    i:=0;
+    
+    IF (v1.length <> v2.length) THEN
+        Write('Les deux tableaux doivent être égaux pour calculer la somme !')
+        sum := NaN;
+    END_IF
+
+    WHILE (i < v1.length) DO
+        sum := sum + v1[i]*v2[i];
+    END_WHILE
+END
+
+ALGORITHM orthogonal_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER[20];
+    n1,n2,sum: INTEGER;
+BEGIN
+    Write('Tapez le traille de v1');
+    Read(n1);
+    Write('Tapez le traille de v2');
+    Read(n2);
+
+    FOR i FROM 0 TO n1 STEP 1  DO
+        Write('Ajoutez lélement',i 'du tableau');
+        Read(v1[i]);
+    END_FOR
+
+    FOR i FROM 0 TO n2 STEP 1  DO
+        Write('Ajoutez lélement',i 'du tableau');
+        Read(v2[i]);
+    END_FOR
+
+    dot_product(v1,v2,sum);
+    IF (sum = 0) THEN
+        Write('v1 et v2 sont orthogonal');
+    ELSE
+        Write('v1 et v2 ne sont pas orthogonal');
+    END_IF
+
+END
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i, sum : INTEGER;
+BEGIN
+    sum:=0;
+    i:=0;
+    
+    IF (v1.length <> v2.length) THEN
+        Write('Les deux tableaux doivent être égaux pour calculer la somme !')
+        sum := NaN;
+    END_IF
+
+    WHILE (i < v1.length) DO
+        sum := sum + v1[i]*v2[i];
+    END_WHILE
+    RETURN sum ;
+END
+ALGORITHM orthogonal_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [20];
+    dot : INTEGER;
+BEGIN
+    Write('Tapez le traille de v1');
+    Read(n1);
+    Write('Tapez le traille de v2');
+    Read(n2);
+
+    FOR i FROM 0 TO n1 STEP 1  DO
+        Write('Ajoutez lélement',i 'du tableau');
+        Read(v1[i]);
+    END_FOR
+
+    FOR i FROM 0 TO n2 STEP 1  DO
+        Write('Ajoutez lélement',i 'du tableau');
+        Read(v2[i]);
+    END_FOR
+
+    sum := dot_product(v1,v2);
+    
+   IF (sum = 0) THEN
+        Write('v1 et v2 sont orthogonal');
+    ELSE
+        Write('v1 et v2 ne sont pas orthogonal');
+    END_IF
+END
